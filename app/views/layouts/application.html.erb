@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Talk</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <%= link_to "Talk", root_path, class: "navbar-brand" %>
+        <div class="navbar-menu">
+          <% if user_signed_in? %>
+            <span class="navbar-user"><%= current_user.email %></span>
+            <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary" %>
+          <% else %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+    <% if notice %>
+      <div class="alert alert-info"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-error"><%= alert %></div>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

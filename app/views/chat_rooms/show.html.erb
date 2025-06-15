@@ -1,0 +1,21 @@
+<div class="chat-rooms" data-controller="chat" data-chat-room-id-value="<%= @chat_room.id %>">
+  <div class="chat-header">
+    <h1 class="chat-room-title"><%= @chat_room.name %></h1>
+    <%= link_to "戻る", chat_rooms_path, class: "btn btn-secondary" %>
+  </div>
+
+  <div class="messages-container" id="messages" data-chat-target="messages">
+    <% @messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+
+  <div class="message-form">
+    <%= form_with(model: [@chat_room, Message.new], data: { chat_target: "form" }) do |f| %>
+      <div class="form-group">
+        <%= f.text_field :content, class: "form-control", placeholder: "メッセージを入力...", data: { chat_target: "input" } %>
+        <%= f.submit "送信", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

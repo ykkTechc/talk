@@ -1,0 +1,25 @@
+<div class="chat-rooms">
+  <div class="chat-header">
+    <h1 class="chat-room-title">チャットルーム一覧</h1>
+    <%= link_to "新規作成", new_chat_room_path, class: "btn btn-primary" %>
+  </div>
+
+  <div class="chat-rooms-grid">
+    <% @chat_rooms.each do |chat_room| %>
+      <div class="chat-room-card">
+        <h2 class="chat-room-title"><%= chat_room.name %></h2>
+        <div class="chat-room-meta">
+          <p>メッセージ数: <%= chat_room.messages.count %></p>
+          <p>最終更新: <%= chat_room.updated_at.strftime("%Y年%m月%d日 %H:%M") %></p>
+          <p>作成者: <%= chat_room.owner&.email %></p>
+        </div>
+        <div class="chat-room-actions">
+          <%= link_to "入室", chat_room_path(chat_room), class: "btn btn-primary" %>
+          <% if chat_room.owner == current_user %>
+            <%= button_to "削除", chat_room_path(chat_room), method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: "このチャットルームを削除してもよろしいですか？" } } %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
