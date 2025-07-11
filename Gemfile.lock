@@ -189,6 +189,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.8-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.18.8-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.18.8-x86_64-linux-gnu)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -349,10 +351,12 @@ GEM
       tailwindcss-ruby (~> 4.0)
     tailwindcss-ruby (4.1.8-aarch64-linux-gnu)
     tailwindcss-ruby (4.1.8-arm64-darwin)
+    tailwindcss-ruby (4.1.8-x86_64-darwin)
     tailwindcss-ruby (4.1.8-x86_64-linux-gnu)
     thor (1.3.2)
     thruster (0.1.13-aarch64-linux)
     thruster (0.1.13-arm64-darwin)
+    thruster (0.1.13-x86_64-darwin)
     thruster (0.1.13-x86_64-linux)
     timeout (0.4.3)
     turbo-rails (2.0.16)
@@ -383,7 +387,9 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  arm64-darwin-23
   arm64-darwin-24
+  x86_64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
@@ -414,9 +420,6 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
-
-RUBY VERSION
-   ruby 3.4.4p34
 
 BUNDLED WITH
    2.4.10
